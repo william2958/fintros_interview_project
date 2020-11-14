@@ -1,8 +1,8 @@
 import {ArticleContent, ArticlePreviewImage, ArticlePreviewWrapper, ArticleType} from "./styles";
-import useImgUrl from "../../hooks/useImgUrl";
-import {H2} from "../../styles/typography/headers";
-import {LabelParagraph} from "../../styles/typography/paragraphs";
-import {DefaultLink} from "../../styles/typography/links";
+import useImgUrl from "hooks/useImgUrl";
+import {H2} from "styles/typography/headers";
+import {LabelParagraph} from "styles/typography/paragraphs";
+import {DefaultLink} from "styles/typography/links";
 
 const ArticlePreview = ({ article }) => {
 

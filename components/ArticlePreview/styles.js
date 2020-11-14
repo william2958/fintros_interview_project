@@ -7,10 +7,6 @@ export const ArticlePreviewWrapper = styled.div`
 	margin: 0 auto;
 	padding: 1.5em 0 2em 0;
 	
-	& + & {
-		border-top: 2px solid ${({theme}) => theme.border};
-	}
-	
 	@media (max-width: 1024px) {
 	  flex-direction: column;
 	}

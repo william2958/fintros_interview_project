@@ -1,11 +1,12 @@
 import {useQuery} from "@apollo/client";
 import _ from 'lodash';
+import Head from "next/head";
 import {useEffect, useState} from "react";
 
 import {GET_BLOG_POSTS} from "queries";
 import {H1} from "styles/typography/headers";
-import ArticlePreview from "components/ArticlePreview";
 import ThemeToggle from "components/ThemeToggle";
+import ArticlesList from "components/ArticlesList";
 
 export default function Home({ toggleTheme }) {
 
@@ -44,9 +45,12 @@ export default function Home({ toggleTheme }) {
 
   return (
     <div>
+      <Head>
+        <title>Will | Fintros</title>
+      </Head>
       <H1 center bold>Explore the Journal</H1>
       <ThemeToggle toggleTheme={toggleTheme} />
-      {articles.map(article => <ArticlePreview article={article} key={article.id} />)}
+      <ArticlesList articles={articles} />
     </div>
   )
 }
