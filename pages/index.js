@@ -9,6 +9,15 @@ import ThemeToggle from "components/ThemeToggle";
 
 export default function Home({ toggleTheme }) {
 
+  useEffect(() => {
+    window.onscroll = () => {
+      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
+        // bottom of page
+        throttledLoadNextPage();
+      }
+    };
+  })
+
   const [pageNum, setPageNum] = useState(0);
 
   const { loading, error, data, fetchMore } = useQuery(GET_BLOG_POSTS, {
@@ -21,15 +30,6 @@ export default function Home({ toggleTheme }) {
   if (error) console.log('error: ', error);
 
   const { retrievePageArticles: articles } = data;
-
-  useEffect(() => {
-    window.onscroll = () => {
-      if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
-        // bottom of page
-        throttledLoadNextPage();
-      }
-    };
-  })
 
   const loadNextPage = () => {
     fetchMore({
