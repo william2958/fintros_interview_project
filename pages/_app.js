@@ -8,9 +8,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-      Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-      sans-serif;
+    font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
+    background-color: ${({theme})=> theme.background};
   }
 
   * {
@@ -19,11 +18,19 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const lightTheme = {
-	primary: '#000'
+	primary: '#000',
+	secondary: '#ddd',
+	highlight: '#cc835c',
+	border: '#EBDED2',
+	background: '#fbf8f5'
 }
 
 const darkTheme = {
-	primary: '#fff'
+	primary: '#fff',
+	secondary: '#ddd',
+	highlight: '#cc835c',
+	border: '#EBDED2',
+	background: '#111'
 }
 
 export default function App({ Component, pageProps }) {
@@ -34,9 +41,9 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<>
-			<GlobalStyle />
 			<ApolloProvider client={apolloClient}>
 				<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+					<GlobalStyle />
 					<Component {...pageProps} toggleTheme={toggleTheme} />
 				</ThemeProvider>
 			</ApolloProvider>

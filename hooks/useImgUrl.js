@@ -29,9 +29,12 @@ function useImgUrl(url) {
 	}, [])
 
 	const getImageLink = async () => {
-
-		const imgLink = await getGraphData(url);
-		setImgUrl(imgLink);
+		try {
+			const imgLink = await getGraphData(url);
+			setImgUrl(imgLink);
+		} catch (e) {
+			// no image available
+		}
 	}
 
 	return imgUrl

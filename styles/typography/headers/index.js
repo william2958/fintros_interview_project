@@ -1,28 +1,34 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import {TypoStyles} from "../styles";
 
-const HeaderStyles = css`
+export const H1 = styled.h1`
+	${TypoStyles};
 	
-	color: ${({color, theme}) => {
-			if (color) {
-				switch (color) {
-					case 'primary':
-						return theme.primary
-				}
-			} else {
-				return theme.primary;
-			}
-		}
-	};
+	font-size: 2rem;
+	line-height: 1.25;
 	
-	${({bold}) => bold
-		? css`font-weight: 700`
-		: css`font-weight: 400`
-	};
+	@media (min-width: 360px) {
+		font-size: calc(2rem + (16 * (100vw - 360px)) / 407)
+	}
+	
+	@media (min-width: 768px) {
+    font-size: calc(3rem + (16 * (100vw - 768px)) / 671)
+	}
 	
 `;
 
-export const H1 = styled.h1`
-	${HeaderStyles};
+export const H2 = styled.h2`
+	${TypoStyles};
 	
-	font-size: 48px;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	margin-bottom: 1rem;
+	
+	@media (min-width: 360px) {
+		font-size: calc(1.25rem + (4 * (100vw - 360px)) / 407);
+	}
+	
+	@media (min-width: 768px) {
+    font-size: calc(1.5rem + (8 * (100vw - 768px)) / 671);
+	}
 `;
