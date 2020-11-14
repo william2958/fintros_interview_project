@@ -2,8 +2,9 @@ import Link from 'next/link';
 import {useQuery} from "@apollo/client";
 import {useState} from "react";
 import {GET_BLOG_POSTS} from "../queries";
+import {H1} from "styles/typography/headers";
 
-export default function Blog() {
+export default function Blog({ toggleTheme }) {
 
   const [pageNum, setPageNum] = useState(0);
 
@@ -29,7 +30,9 @@ export default function Blog() {
 
   return (
     <div>
+      <H1>Test Text</H1>
       <button onClick={loadNextPage}>load next</button>
+      <button onClick={toggleTheme}>toggle theme</button>
     </div>
   )
 }
