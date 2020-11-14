@@ -14,26 +14,34 @@ async function getGraphData(url) {
 		const imgLinkStartIndex = data.indexOf('"', startIndex)+1;
 		const imgLinkEndIndex = data.indexOf('"', imgLinkStartIndex);
 		const imgLink = data.substring(imgLinkStartIndex, imgLinkEndIndex);
-		return imgLink;
-	} else {
-		return null;
+		try {
+			new URL(imgLink);
+			return imgLink
+		} catch (_) {}
 	}
+
+	return null;
+
 }
 
 function useImgUrl(url) {
-	const [imgUrl, setImgUrl] = useState('');
+	const [imgUrl, setImgUrl] = useState(null);
 
 	useEffect(() => {
-		if (!imgUrl)
+		if (imgUrl === null)
 			getImageLink()
 	}, [])
 
 	const getImageLink = async () => {
 		try {
 			const imgLink = await getGraphData(url);
-			setImgUrl(imgLink);
+			if (imgLink)
+				setImgUrl(imgLink);
+			else
+				setImgUrl('');
 		} catch (e) {
 			// no image available
+			setImgUrl('');
 		}
 	}
 
