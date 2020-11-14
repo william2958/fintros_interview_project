@@ -11,6 +11,17 @@ export default function Home({ toggleTheme }) {
 
   const [pageNum, setPageNum] = useState(0);
 
+  const { loading, error, data, fetchMore } = useQuery(GET_BLOG_POSTS, {
+    variables: {
+      pageNum: pageNum
+    }
+  });
+
+  if (loading) return (<p>Loading...</p>);
+  if (error) console.log('error: ', error);
+
+  const { retrievePageArticles: articles } = data;
+
   useEffect(() => {
     window.onscroll = () => {
       if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight) {
@@ -19,17 +30,6 @@ export default function Home({ toggleTheme }) {
       }
     };
   })
-
-  const { loading, error, data, fetchMore } = useQuery(GET_BLOG_POSTS, {
-    variables: {
-      pageNum: pageNum
-    }
-  });
-
-  if (loading) return (<div>Loading...</div>);
-  if (error) console.log('error: ', error);
-
-  const { retrievePageArticles: articles } = data;
 
   const loadNextPage = () => {
     fetchMore({

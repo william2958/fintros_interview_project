@@ -1,37 +1,10 @@
-import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import {ApolloProvider} from "@apollo/client";
 import {apolloClient} from "../apolloClient";
 import {useState} from "react";
-
-const GlobalStyle = createGlobalStyle`
-	html,
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: SofiaProWeb, Helvetica, Arial, sans-serif;
-    background-color: ${({theme})=> theme.background};
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-`;
-
-const lightTheme = {
-	primary: '#000',
-	secondary: '#ddd',
-	highlight: '#cc835c',
-	border: '#EBDED2',
-	background: '#fbf8f5'
-}
-
-const darkTheme = {
-	primary: '#fff',
-	secondary: '#ddd',
-	highlight: '#cc835c',
-	border: '#888',
-	background: '#111'
-}
+import GlobalStyle from "styles/globalStyles";
+import lightTheme from "styles/themes/light";
+import darkTheme from "styles/themes/dark";
 
 export default function App({ Component, pageProps }) {
 	const [theme, setTheme] = useState('light');
