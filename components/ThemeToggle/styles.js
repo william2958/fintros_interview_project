@@ -1,13 +1,18 @@
 import styled from 'styled-components';
 
 export const ThemeToggleWrapper = styled.div`
-	position: absolute;
+	position: fixed;
 	top: 24px;
 	right: 24px;
 	
 	border: 1px solid ${({theme}) => theme.secondary};
 	
 	padding: 12px;
+	
+	@media (max-width: 1024px) {
+	  top: auto;
+	  bottom: 24px;
+	}
 `;
 
 export const ToggleButton = styled.button`

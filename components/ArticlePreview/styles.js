@@ -11,11 +11,19 @@ export const ArticlePreviewWrapper = styled.div`
 		border-top: 2px solid ${({theme}) => theme.border};
 	}
 	
+	@media (max-width: 1024px) {
+	  flex-direction: column;
+	}
+	
 `;
 
 export const ArticleContent = styled.div`
 	margin-top: -1.5em;
 	margin-left: 4.2%;
+	
+	@media (max-width: 1024px) {
+	  margin-left: 0;
+	}
 `;
 
 export const ArticlePreviewImage = styled.div`
@@ -33,6 +41,10 @@ export const ArticlePreviewImage = styled.div`
   @media (min-width: 768px) {
   	height: 28.75rem;
   }
+  @media (max-width: 1024px) {
+    width: 100%;
+    min-width: 100%;
+	}
 `;
 
 export const ArticleType = styled.a`

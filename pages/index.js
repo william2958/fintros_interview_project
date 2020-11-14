@@ -26,7 +26,7 @@ export default function Home({ toggleTheme }) {
     }
   });
 
-  if (loading) return (<p>Loading...</p>);
+  if (loading) return (<div>Loading...</div>);
   if (error) console.log('error: ', error);
 
   const { retrievePageArticles: articles } = data;
