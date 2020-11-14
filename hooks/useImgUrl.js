@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 async function getGraphData(url) {
 	if (!url)
 		return null;
-	const data = (await axios.get('https://cors-anywhere.herokuapp.com/' + url)).data;
+	const data = (await axios.get('https://fintros-cors-anywhere.herokuapp.com/' + url)).data;
 
 	const searchString = '"og:image"'
 	const tagIndex = data.indexOf(searchString);
